@@ -31,4 +31,32 @@ $name = $_POST['name'] ?? '';
 $email = $_POST['email'] ?? '';
 $club = $_POST['club'] ?? '';
 
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (empty($name)) {
+        $errors[] = "Name is required.";
+    }
+    if (empty($email)) {
+        $errors[] = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
+    }
+    if (empty($club)) {
+        $errors[] = "Please select a club.";
+    }
+
+    if ($errors) {
+        foreach ($errors as $error) {
+            echo "<p style='color:red;'>$error</p>";
+        }
+    } else {
+        // Display submitted info
+        echo "<h2>Registration Successful!</h2>";
+        echo "<p>Name: $name</p>";
+        echo "<p>Email: $email</p>";
+        echo "<p>Club: $club</p>";
+    }
+}
+
 ?>
