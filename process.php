@@ -27,4 +27,8 @@ Step 6 Requirements:
   - Search functionality
 */
 
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$club = $_POST['club'] ?? '';
+
 ?>
