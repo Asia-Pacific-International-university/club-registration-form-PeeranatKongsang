@@ -9,3 +9,10 @@ Requirements for Step 2:
 - Use at least 3 different CSS properties (color, background, padding, margin, border, etc.)
 - Make it look professional and easy to read
 */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
