@@ -59,4 +59,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+
+session_start();
+
+if (!isset($_SESSION['registrations'])) {
+    $_SESSION['registrations'] = [];
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errors)) {
+    $_SESSION['registrations'][] = [
+        'name' => $name,
+        'email' => $email,
+        'club' => $club
+    ];
+}
+
+// Display all registrations
+if (!empty($_SESSION['registrations'])) {
+    echo "<h2>All Registrations</h2><ul>";
+    foreach ($_SESSION['registrations'] as $reg) {
+        echo "<li>Name: {$reg['name']}, Email: {$reg['email']}, Club: {$reg['club']}</li>";
+    }
+    echo "</ul>";
+}
 ?>
